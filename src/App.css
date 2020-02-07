@@ -1,0 +1,19 @@
+.content-header {
+  text-align: center;
+  margin-top: 15px;
+}
+
+@media all and (min-width: 480px) {
+  .Login {
+    padding: 60px 0;
+  }
+
+  .Login form {
+    margin: 0 auto;
+    max-width: 640px;
+
+  }
+}
+.mB60 {
+  margin-bottom: 60px;
+}
