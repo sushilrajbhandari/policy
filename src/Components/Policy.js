@@ -1,37 +1,31 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Table, Button } from 'react-bootstrap';
+import axios from 'axios'
 
-class Policy extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      policies: []
-    }
-  }
+function Policy (props){
 
-  componentDidMount(){
+  const [policies, SetPolicies] = useState ([])
 
-    let autoRegistrationData = JSON.parse(localStorage.getItem("autoRegistration"))
-    let userData = JSON.parse(localStorage.getItem("users"))
+  useEffect (() =>{
+    axios.get ('http://localhost:3000/autoRegistration')
+    .then (response =>{
+      console.log(response)
+      SetPolicies (response.data)
+    })
+    .catch (error =>{
+      console.log (error)
+    })
+    
+  })
 
-    const {id, email} = userData[0]
-
-    let policies = []
-    for (let i=0; i<autoRegistrationData.length; i++){
-      const {zipCode,ageFirstReceivedLic,vehicleModel,manufacturer} = autoRegistrationData[i]
-      // debugger
-      const policy = {zipCode,ageFirstReceivedLic, vehicleModel,manufacturer,id,email}
-      policies.push(policy)
-    }
-
-    this.setState({policies:policies})
-
+  function deletePolicty(){
 
   }
 
-  render() {
-    const {policies} = this.state;
+  function selectPolicy(){
+
+  }
+
       return(
         <div>
           <h2>Policy</h2>
@@ -55,8 +49,17 @@ class Policy extends React.Component {
                   <td>{policy.vehicleModel}</td>
                   <td>{policy.manufacturer}</td>
                   <td>
-                    <Button variant="info" onClick={() => this.props.selectPolicy(policy.id)}>Select</Button>
-                    &nbsp;<Button variant="danger" onClick={() => this.deletePolicty(policy.id)}>Delete</Button>
+                    <Button 
+                      variant="info" 
+                      onClick={() => selectPolicy(policy.id)}>
+                        Select
+                    </Button>
+                      &nbsp;
+                    <Button 
+                      variant="danger" 
+                      onClick={() => deletePolicty(policy.id)}>
+                        Delete
+                    </Button>
                   </td>
                 </tr>
               ))}
@@ -64,7 +67,8 @@ class Policy extends React.Component {
           </Table>
         </div>
       )
-  }
-}
+    }
+
+
 
 export default Policy;
