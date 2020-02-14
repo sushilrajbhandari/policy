@@ -1,11 +1,10 @@
 {
-  "users": [
+  "users": 
     {
-      "email": "sushil.r@infosys.com",
+      "email": "abc@abc.com",
       "password": "apple",
       "id": 1
-    }
-  ],
+    },
   "autoRegistration": [
     {
       "zipCode": "06106",
@@ -17,17 +16,6 @@
       "policyEffectiveDate": "01/01/2020",
       "userId": 1,
       "id": 1
-    },
-    {
-      "zipCode": "06106",
-      "dlID": "111-222-333",
-      "ageFirstReceivedLic": "17",
-      "vehicleModel": "CX-9",
-      "manufacturer": "Mazda",
-      "year": "2019",
-      "policyEffectiveDate": "01/01/2020",
-      "userId": 1,
-      "id": 2
     }
   ]
 }
